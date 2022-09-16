@@ -12,7 +12,7 @@ export const PokedexLayout = ({ children }) => {
       <NavBar />
       <Grid
         container
-        sx={{ marginTop: { xs: "20%", sm: "8%", md: "5%", lg: "1%" } }}
+        sx={{ marginTop: { xs: "20%", sm: "8%", md: "5%", lg: "3%" } }}
         justifyContent="center"
         direction="column"
       >
