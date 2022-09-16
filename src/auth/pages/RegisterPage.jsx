@@ -1,14 +1,30 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
+import { useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 export const RegisterPage = () => {
-  const handleChange = (event) => {
-    //setUserName(event.target.value);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const { register, registerStatus } = useContext(AuthContext);
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  const onRegister = (event) => {
+    event.preventDefault();
+
+    if (!name || !password) return;
+    register(name, password);
+    //const users = JSON.parse(localStorage.getItem("pokedexUsers"));
   };
   return (
     <AuthLayout title="Create account">
-      <form>
+      <form onSubmit={onRegister}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -16,7 +32,7 @@ export const RegisterPage = () => {
               type="name"
               placeholder="Username"
               fullWidth
-              onChange={handleChange}
+              onChange={handleName}
             />
           </Grid>
 
@@ -26,12 +42,18 @@ export const RegisterPage = () => {
               type="password"
               placeholder="Password"
               fullWidth
+              onChange={handlePassword}
             />
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12}>
-              <Button color="secondary" variant="contained" fullWidth>
+              <Button
+                onClick={onRegister}
+                color="secondary"
+                variant="contained"
+                fullWidth
+              >
                 Create account
               </Button>
             </Grid>
@@ -43,6 +65,14 @@ export const RegisterPage = () => {
               Login
             </Link>
           </Grid>
+          {registerStatus != "" && (
+            <Typography
+              fontWeight="bold"
+              color={registerStatus === "Sucess" ? "#4ab03a" : "secondary"}
+            >
+              {registerStatus}
+            </Typography>
+          )}
         </Grid>
       </form>
     </AuthLayout>

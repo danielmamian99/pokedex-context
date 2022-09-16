@@ -4,22 +4,25 @@ import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { Google } from "@mui/icons-material";
 
 import { AuthLayout } from "../layout/AuthLayout";
 import { AuthContext } from "../context";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
-  const [userName, setUserName] = useState("");
-  const handleChange = (event) => {
-    setUserName(event.target.value);
-  };
+  const { login, loginStatus } = useContext(AuthContext);
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+const handleName = (event) => {
+  setName(event.target.value);
+};
+const handlePassword = (event) => {
+  setPassword(event.target.value);
+};
   const onLogin = (event) => {
     event.preventDefault();
-    if (!userName) return;
-    login(userName);
+    if(!name || !password) return;
+    login(name, password);
     navigate("/pokedex/home");
   };
 
@@ -33,7 +36,7 @@ export const LoginPage = () => {
               type="name"
               placeholder="Username"
               fullWidth
-              onChange={handleChange}
+              onChange={handleName}
             />
           </Grid>
 
@@ -43,6 +46,8 @@ export const LoginPage = () => {
               type="password"
               placeholder="Password"
               fullWidth
+              onChange={handlePassword}
+
             />
           </Grid>
 
@@ -53,7 +58,7 @@ export const LoginPage = () => {
               </Button>
             </Grid>
           </Grid>
-
+          {loginStatus != '' && <Typography fontWeight='bold' color='secondary'> {loginStatus} </Typography>}
           <Grid container direction="row" justifyContent="end">
             <Link component={RouterLink} color="inherit" to="/register">
               Create account
