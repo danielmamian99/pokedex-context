@@ -1,13 +1,29 @@
-import { Link as RouterLink } from "react-router-dom";
+import { useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { Button, Grid, Link, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 
 import { AuthLayout } from "../layout/AuthLayout";
+import { AuthContext } from "../context";
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const [userName, setUserName] = useState("");
+  const handleChange = (event) => {
+    setUserName(event.target.value);
+  };
+  const onLogin = (event) => {
+    event.preventDefault();
+    if (!userName) return;
+    login(userName);
+    navigate("/pokedex/home");
+  };
+
   return (
     <AuthLayout title="Login">
-      <form>
+      <form onSubmit={onLogin}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -15,6 +31,7 @@ export const LoginPage = () => {
               type="name"
               placeholder="Nombre"
               fullWidth
+              onChange={handleChange}
             />
           </Grid>
 
@@ -24,8 +41,7 @@ export const LoginPage = () => {
                 variant="contained"
                 color="secondary"
                 fullWidth
-                component={RouterLink}
-                to="/pokedex/home"
+                onClick={onLogin}
               >
                 Login
               </Button>

@@ -1,8 +1,12 @@
+import { useContext } from "react";
+
 import { Grid } from "@mui/material";
+import { AuthContext } from "../../auth/context";
 
 import { NavBar, UserTitle } from "../components";
 
 export const PokedexLayout = ({ children }) => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <NavBar />
@@ -19,7 +23,7 @@ export const PokedexLayout = ({ children }) => {
             justifyContent: "center",
           }}
         >
-          <UserTitle title="Jeferson Daniel Mamian" />
+          <UserTitle title={user} />
         </Grid>
         <Grid container justifyContent="center" alignItems="center">
           {children}

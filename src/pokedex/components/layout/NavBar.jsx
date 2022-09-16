@@ -1,4 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
+import { useContext } from "react";
 
 import {
   AppBar,
@@ -12,8 +13,13 @@ import {
 import { LogoutOutlined } from "@mui/icons-material";
 
 import { SearchComponent } from "./SearchComponent";
+import { AuthContext } from "../../../auth/context";
 
 export const NavBar = () => {
+  const { logout } = useContext(AuthContext);
+  const onLogout = () => {
+    logout();
+  };
   return (
     <AppBar position="fixed" color="secondary" sx={{ height: "9%" }}>
       <Toolbar>
@@ -28,8 +34,7 @@ export const NavBar = () => {
           <Grid>
             <Link component={RouterLink} color="inherit" to="/pokedex/home">
               <Typography variant="h6" noWrap component="div">
-                {" "}
-                Home{" "}
+                Home
               </Typography>
             </Link>
           </Grid>
@@ -45,10 +50,9 @@ export const NavBar = () => {
           </Grid>
           <Grid sx={{ display: "flex", alignItems: "center" }}>
             <Typography color="white" variant="h6" noWrap component="div">
-              {" "}
-              Logout{" "}
+              Logout
             </Typography>
-            <IconButton color="error" component={RouterLink} to="/login">
+            <IconButton color="error" onClick={onLogout}>
               <LogoutOutlined sx={{ color: "#ffff" }} />
             </IconButton>
           </Grid>
