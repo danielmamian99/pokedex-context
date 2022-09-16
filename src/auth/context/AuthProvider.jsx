@@ -20,8 +20,8 @@ export const AuthProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState("");
   useEffect(() => {
     localStorage.setItem("pokedexUsers", JSON.stringify(users));
-  }, [users])
-  
+  }, [users]);
+
   const register = (name, password) => {
     const newUser = {
       user: name,
