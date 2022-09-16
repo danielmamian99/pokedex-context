@@ -14,10 +14,13 @@ import { LogoutOutlined } from "@mui/icons-material";
 
 import { SearchComponent } from "./SearchComponent";
 import { AuthContext } from "../../../auth/context";
+import { PokedexContext } from "../../context";
 
 export const NavBar = () => {
+  const {resetPage} = useContext(PokedexContext);
   const { logout } = useContext(AuthContext);
   const onLogout = () => {
+    resetPage();
     logout();
   };
   return (

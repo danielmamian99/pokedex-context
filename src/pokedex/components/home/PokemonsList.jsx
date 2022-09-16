@@ -1,12 +1,14 @@
 import { Grid } from "@mui/material";
+import { useContext } from "react";
+import { PokedexContext } from "../../context";
 
 import { useFetchPokemons } from "../../hooks";
 import { PokemonCard } from "../generals";
 
 export const PokemonsList = () => {
+  const {page} = useContext(PokedexContext);
   const urlImage =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
-  const page = 73;
   const { pokemons } = useFetchPokemons(page);
   return (
     <>

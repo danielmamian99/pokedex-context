@@ -1,8 +1,14 @@
+import { useContext } from "react";
+
 import { Grid, Pagination } from "@mui/material";
 
+import { PokedexContext } from "../../context";
+
 export const HomePagination = () => {
+  
+  const {page, onChangePage} = useContext(PokedexContext);
   const handlePageChange = (event, value) => {
-    console.log(value);
+    onChangePage(value);
   };
   return (
     <Grid container justifyContent="center" marginBottom={2}>
@@ -10,8 +16,9 @@ export const HomePagination = () => {
         color="primary"
         onChange={handlePageChange}
         size="large"
-        defaultPage={1}
         count={73}
+        value={page}
+        page={page}
         variant="outlined"
         shape="rounded"
       />
