@@ -11,17 +11,17 @@ import { AuthContext } from "../context";
 export const LoginPage = () => {
   const navigate = useNavigate();
   const { login, loginStatus } = useContext(AuthContext);
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-const handleName = (event) => {
-  setName(event.target.value);
-};
-const handlePassword = (event) => {
-  setPassword(event.target.value);
-};
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
   const onLogin = (event) => {
     event.preventDefault();
-    if(!name || !password) return;
+    if (!name || !password) return;
     login(name, password);
     navigate("/pokedex/home");
   };
@@ -47,18 +47,27 @@ const handlePassword = (event) => {
               placeholder="Password"
               fullWidth
               onChange={handlePassword}
-
             />
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12}>
-              <Button onClick={onLogin} color="secondary" variant="contained" fullWidth>
+              <Button
+                onClick={onLogin}
+                color="secondary"
+                variant="contained"
+                fullWidth
+              >
                 Login
               </Button>
             </Grid>
           </Grid>
-          {loginStatus != '' && <Typography fontWeight='bold' color='secondary'> {loginStatus} </Typography>}
+          {loginStatus != "" && (
+            <Typography fontWeight="bold" color="secondary">
+              {" "}
+              {loginStatus}{" "}
+            </Typography>
+          )}
           <Grid container direction="row" justifyContent="end">
             <Link component={RouterLink} color="inherit" to="/register">
               Create account

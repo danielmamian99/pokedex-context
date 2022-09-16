@@ -1,9 +1,11 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { AuthLayout } from "../layout/AuthLayout";
 import { useState } from "react";
-import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+
+import { Button, Grid, Link, TextField, Typography } from "@mui/material";
+
+import { AuthLayout } from "../layout/AuthLayout";
+import { AuthContext } from "../context/AuthContext";
 
 export const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -20,7 +22,6 @@ export const RegisterPage = () => {
 
     if (!name || !password) return;
     register(name, password);
-    //const users = JSON.parse(localStorage.getItem("pokedexUsers"));
   };
   return (
     <AuthLayout title="Create account">

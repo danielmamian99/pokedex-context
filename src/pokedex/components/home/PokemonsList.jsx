@@ -6,7 +6,7 @@ import { useFetchPokemons } from "../../hooks";
 import { PokemonCard } from "../generals";
 
 export const PokemonsList = () => {
-  const {page} = useContext(PokedexContext);
+  const { page } = useContext(PokedexContext);
   const urlImage =
     "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
   const { pokemons } = useFetchPokemons(page);
@@ -25,9 +25,8 @@ export const PokemonsList = () => {
             key={urlImage + id}
           >
             <PokemonCard
-              urlImage={urlImage + (id + 1 + page * 12) + ".png"}
+              urlImage={urlImage + (id + 1 + (page - 1) * 12) + ".png"}
               name={item.name}
-              pokemonId={id + 1 + page * 12}
             />
           </Grid>
         ))}
