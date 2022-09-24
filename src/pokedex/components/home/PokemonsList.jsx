@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { useContext } from "react";
 import { PokedexContext } from "../../context";
 
-import { useFetchPokemons } from "../../hooks";
+import { useFetchPokemons } from "../../../hooks";
 import { Error, PokemonCard, Spinner } from "../generals";
 
 export const PokemonsList = () => {

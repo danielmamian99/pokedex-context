@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha, InputBase } from "@mui/material";
 
 import "./searchComponent.css";
-import { useForm } from "../../hooks";
+import { useForm } from "../../../hooks";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

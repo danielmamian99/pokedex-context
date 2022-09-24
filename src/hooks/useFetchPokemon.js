@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getPokemon } from "../helpers";
+import { getPokemon } from "../pokedex/helpers";
 
 export const useFetchPokemon = (category) => {
   const [state, setState] = useState({

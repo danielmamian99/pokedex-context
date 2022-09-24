@@ -10,9 +10,10 @@ import {
   PokemonDescripcion,
   ButtonsNavigation,
 } from "../components";
-import { useFetchPokemon } from "../hooks";
+import { useFetchPokemon } from "../../hooks";
 
 export const PokemonPage = () => {
+  
   const { id } = useParams();
   const { pokemon, loading, error } = useFetchPokemon(id);
   return (

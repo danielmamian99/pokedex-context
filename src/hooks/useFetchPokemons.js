@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getPokemons } from "../helpers";
+import { getPokemons } from "../pokedex/helpers";
 
 export const useFetchPokemons = (page) => {
   const [state, setState] = useState({

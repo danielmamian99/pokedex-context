@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
@@ -7,18 +6,15 @@ import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 
 import { AuthLayout } from "../layout/AuthLayout";
 import { AuthContext } from "../context";
+import { useForm } from "../../hooks";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const { login, loginStatus } = useContext(AuthContext);
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const handleName = (event) => {
-    setName(event.target.value);
-  };
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
+  const {name , password, onInputChange} = useForm({
+    name: '',
+    password: '',
+  })
   const onLogin = (event) => {
     event.preventDefault();
     if (!name || !password) return;
@@ -36,7 +32,9 @@ export const LoginPage = () => {
               type="name"
               placeholder="Username"
               fullWidth
-              onChange={handleName}
+              name="name"
+              value={name}
+              onChange={onInputChange}
             />
           </Grid>
 
@@ -46,7 +44,9 @@ export const LoginPage = () => {
               type="password"
               placeholder="Password"
               fullWidth
-              onChange={handlePassword}
+              name="password"
+              value={password}
+              onChange={onInputChange}
             />
           </Grid>
 

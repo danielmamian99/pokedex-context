@@ -21,7 +21,6 @@ export const UserTitle = memo(({ title }) => {
         fontWeight="bold"
         sx={{
           wordWrap: "break-word",
-          fontSize: { xs: "1.5em", sm: "2em", md: "2.5em" },
           fontSize: { xs: "1.5em", sm: "2em", md: "3.5em", lg:"4em" },
         }}
         color="white"
