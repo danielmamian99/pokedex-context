@@ -14,6 +14,7 @@ export const UserTitle = memo(({ title }) => {
         borderRadius: 1,
         wordWrap: "break-word",
         backgroundColor: "#4ab03a",
+        marginTop: {xs: "1.5em", sm: "2em", md: "2.5em", lg:"4em"}
       }}
     >
       <Typography
@@ -21,6 +22,7 @@ export const UserTitle = memo(({ title }) => {
         sx={{
           wordWrap: "break-word",
           fontSize: { xs: "1.5em", sm: "2em", md: "2.5em" },
+          fontSize: { xs: "1.5em", sm: "2em", md: "3.5em", lg:"4em" },
         }}
         color="white"
         component="h2"
