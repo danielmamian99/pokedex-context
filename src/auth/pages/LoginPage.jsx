@@ -15,11 +15,12 @@ export const LoginPage = () => {
     name: '',
     password: '',
   })
+  console.log('loginStatus >>>', loginStatus);
+  if(loginStatus === "sucess") navigate("/pokedex/home");
   const onLogin = (event) => {
     event.preventDefault();
     if (!name || !password) return;
     login(name, password);
-    navigate("/pokedex/home");
   };
 
   return (

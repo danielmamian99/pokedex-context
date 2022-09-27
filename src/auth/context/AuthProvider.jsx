@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
           user: name,
         });
         localStorage.setItem("pokedexUser", name);
-        setLoginStatus("");
+        setLoginStatus("sucess");
       } else {
         setLoginStatus("Incorrect password");
       }
@@ -58,6 +58,7 @@ export const AuthProvider = ({ children }) => {
   };
   const logout = () => {
     localStorage.removeItem("pokedexUser");
+    setLoginStatus("");
     setLoginState({
       logged: false,
       user: "",
